@@ -4,6 +4,7 @@ var makeHashTable = function() {
 
     return {
       _storage: [],
+
       retrieve: function(key) {
         return this._storage[hashFn(key, max)];
       },
@@ -11,12 +12,23 @@ var makeHashTable = function() {
       insert: function(key, value) {
         //your code is here
         var col =hashFn(key, max)
-        if(this._storage===null){
-
+        
+       if(!this._storage[col]) {
         this._storage[col] = value;
-        }
-        console.log(this._storage)
+                console.log("a" +this._storage[col]  )
 
+        
+        }
+        for (var i = 0; i < this._storage.length; i++) {
+
+        
+          if(i===col){
+            this._storage[col][0]=value;
+          }else{
+
+            this._storage[col] =value;
+          }
+        }
     }
   }
 };
